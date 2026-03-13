@@ -186,3 +186,77 @@ if option == 1:
             print("Invalid option:")
             print("It must be in the list AND be different from input")
 
+    elif input_unit_type == "seconds":
+        if output_unit_type == "days":
+            output_unit_value = input_unit_value / (24 * 60 * 60)
+        elif output_unit_value == "hours":
+            output_unit_value = input_unit_value / (60 * 60)
+        elif output_unit_value == "minutes":
+            output_unit_value = input_unit_value / 60
+        else:
+            print("Invalid option:")
+            print("It must be in the list AND be different from input")
+    else:
+        print("Invalid input option:")
+        print("It must be in the list!")
+
+elif option == 2:
+    if input_unit_type == "meters":
+        if output_unit_type == "kilometers":
+            output_unit_value = input_unit_value / 1000
+        elif output_unit_value == "miles":
+            output_unit_value = input_unit_value / (1000 * 1.609344)
+        else:
+            print("Invalid option:")
+            print("It must be in the list AND be different from input")
+
+    elif input_unit_type == "kilometers":
+        if output_unit_type == "meters":
+            output_unit_value = input_unit_value * 1000
+        elif output_unit_value == "miles":
+            output_unit_value = input_unit_value / 1.609344
+        else:
+            print("Invalid option:")
+            print("It must be in the list AND be different from input")
+
+    elif input_unit_type == "miles":
+        if output_unit_type == "meters":
+            output_unit_value = input_unit_value * 1000 * 1.609344
+        elif output_unit_value == "kilometers:
+            output_unit_value = input_unit_value * 1.609344
+        else:
+            print("Invalid option:")
+            print("It must be in the list AND be different from input")
+    else:
+        print("Invalid input option:")
+        print("It must be in the list!")
+
+elif option == 3:
+    if input_unit_type == "celsius":
+        if output_unit_type == "fahrenheit":
+            output_unit_value = (input_unit_value * 9 / 5) + 32
+        else:
+            print("Invalid option:")
+            print("It must be in the list AND be different from input")
+    elif input_unit_type == "fahrenheit":
+        if output_unit_type == "celsius":
+            output_unit_value = (input_unit_value - 32) * 5 / 9
+        else:
+            print("Invalid option:")
+            print("It must be in the list AND be different from input")
+    else:
+        print("Invalid input option:")
+        print("It must be in the list!")
+else:
+    print("Invalid conversion option! Please choose from the list")
+
+# OUTPUT
+print("**** INPUT UNIT ****")
+print(input_unit_type)
+print("**** INPUT VALUE ****")
+print(input_unit_value)
+print("**** OUTPUT UNIT ****")
+print(output_unit_type)
+print("**** OUTPUT VALUE ****")
+print(output_unit_value)
+print("==== END OF PROGRAM ====")

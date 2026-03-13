@@ -1,4 +1,4 @@
-BEGIN unit_converter
+# BEGIN unit_converter
 #   DISPLAY “==== UNIT CONVERTER ====”
 #	DISPLAY “This program converts values between units for:”
 #	DISPLAY “1. Time (days, hours, minutes, seconds)”
@@ -167,9 +167,9 @@ if option == 1:
     elif input_unit_type == "hours":
         if output_unit_type == "days":
             output_unit_value = input_unit_value / 24
-        elif output_unit_value == "minutes":
+        elif output_unit_type == "minutes":
             output_unit_value = input_unit_value * 60
-        elif output_unit_value == "seconds":
+        elif output_unit_type == "seconds":
             output_unit_value = input_unit_value * 60 * 60
         else:
             print("Invalid option:")
@@ -178,9 +178,9 @@ if option == 1:
     elif input_unit_type == "minutes":
         if output_unit_type == "days":
             output_unit_value = input_unit_value / (24 * 60)
-        elif output_unit_value == "hours":
+        elif output_unit_type == "hours":
             output_unit_value = input_unit_value / 60
-        elif output_unit_value == "seconds":
+        elif output_unit_type == "seconds":
             output_unit_value = input_unit_value * 60
         else:
             print("Invalid option:")
@@ -189,9 +189,9 @@ if option == 1:
     elif input_unit_type == "seconds":
         if output_unit_type == "days":
             output_unit_value = input_unit_value / (24 * 60 * 60)
-        elif output_unit_value == "hours":
+        elif output_unit_type == "hours":
             output_unit_value = input_unit_value / (60 * 60)
-        elif output_unit_value == "minutes":
+        elif output_unit_type == "minutes":
             output_unit_value = input_unit_value / 60
         else:
             print("Invalid option:")
@@ -204,7 +204,7 @@ elif option == 2:
     if input_unit_type == "meters":
         if output_unit_type == "kilometers":
             output_unit_value = input_unit_value / 1000
-        elif output_unit_value == "miles":
+        elif output_unit_type == "miles":
             output_unit_value = input_unit_value / (1000 * 1.609344)
         else:
             print("Invalid option:")
@@ -213,7 +213,7 @@ elif option == 2:
     elif input_unit_type == "kilometers":
         if output_unit_type == "meters":
             output_unit_value = input_unit_value * 1000
-        elif output_unit_value == "miles":
+        elif output_unit_type == "miles":
             output_unit_value = input_unit_value / 1.609344
         else:
             print("Invalid option:")
@@ -222,7 +222,7 @@ elif option == 2:
     elif input_unit_type == "miles":
         if output_unit_type == "meters":
             output_unit_value = input_unit_value * 1000 * 1.609344
-        elif output_unit_value == "kilometers:
+        elif output_unit_type == "kilometers":
             output_unit_value = input_unit_value * 1.609344
         else:
             print("Invalid option:")

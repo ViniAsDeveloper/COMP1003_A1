@@ -1,3 +1,7 @@
+# Vinicius Salem Henrique
+
+# Student ID = 24897817
+
 # BEGIN unit_converter
 #   DISPLAY “==== UNIT CONVERTER ====”
 #	DISPLAY “This program converts values between units for:”

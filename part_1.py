@@ -1,3 +1,7 @@
+# Vinicius Salem Henrique
+
+# Student ID = 24897817
+
 #  BEGIN
 #    DISPLAY “===== BILL SPLITER =====\n”
 #    DISPLAY “Enter the total bill amount (without tip):”

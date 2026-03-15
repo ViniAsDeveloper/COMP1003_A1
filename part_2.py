@@ -137,21 +137,21 @@
 #END
 
 # INPUT
-print("==== UNIT CONVERTER ====")
+print("\n\n================== UNIT CONVERTER ===================")
 print("This program converts values between units for:")
 print("1. Time (days, hours, minutes, seconds)")
 print("2. Distance (meters, kilometers, miles)")
 print("3. Temperature (celsius, fahrenheit)")
 
-option_input = input("Enter the corresponding number to the desired option:")
+option_input = input("Enter the corresponding number to the desired option:\n_> ")
 option = int(option_input)
 
-input_unit_type = input("Enter the input unit:")
+input_unit_type = input("Enter the input unit:\n_> ")
 
-input_unit_value_input = input("Enter the input unit value:")
+input_unit_value_input = input("Enter the input unit value:\n_> ")
 input_unit_value = float(input_unit_value_input)
 
-output_unit_type = input("Enter the output unit type:")
+output_unit_type = input("Enter the output unit type:\n_> ")
 
 
 # PROCESS
@@ -255,12 +255,12 @@ else:
     print("Invalid conversion option! Please choose from the list")
 
 # OUTPUT
-print("**** INPUT UNIT ****")
-print(input_unit_type)
-print("**** INPUT VALUE ****")
-print(input_unit_value)
-print("**** OUTPUT UNIT ****")
-print(output_unit_type)
-print("**** OUTPUT VALUE ****")
-print(output_unit_value)
-print("==== END OF PROGRAM ====")
+print(f"\n********* RESULTS *********\n\nINPUT UNIT: {input_unit_type:>15}")
+# print(input_unit_type)
+print(f"INPUT VALUE: {input_unit_value:>14,.2f}")
+# print(input_unit_value)
+print(f"OUTPUT UNIT: {output_unit_type:>14}")
+# print(output_unit_type)
+print(f"OUTPUT VALUE: {output_unit_value:>13,.2f}")
+# print(output_unit_value)
+print("\n*Results are trucated to 2 decimal places\n\n=================== END OF PROGRAM ===================")

@@ -26,15 +26,17 @@
 #  END
 
 
-# INPUT
+# INPUT -> here we get user input using the input() function, which gets
+# a string containing instructions to the user as the first argument.
+
 print("===== BILL SPLITER =====\n")
 bill_amount_input = input("Enter the total bill amount (without tip):")
 tip_percentage_input = input("Enter the tip percentage (0-100):");
 number_of_people_input = input("Enter the number of people who will split the bill:")
 
-# question: should I put the conversion process into '# INPUT' or '# PROCESS' ?
+# PROCESS -> here we convert inputs to its intended types and perform
+# the necessary calculations to obtain the output value
 
-# PROCESS
 bill_amount = float(bill_amount_input)
 tip_percentage = float(tip_percentage_input)
 number_of_people = int(number_of_people_input)
@@ -43,7 +45,7 @@ amount_per_person = bill_amount / number_of_people
 suggested_tip_per_person = tip_percentage / 100 * amount_per_person
 final_value_per_person = amount_per_person + suggested_tip_per_person
 
-# OUTPUT
+# OUTPUT -> here we print the output values in a readable way to the user
 
 print("**** AMOUNT PER PERSON (withou tip) ****")
 print(amount_per_person)

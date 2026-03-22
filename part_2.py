@@ -67,8 +67,8 @@
 #				DISPLAY “It must be in the list AND be different from input”
 #			END IF
 #		ELSE
-#			DISPLAY “Invalid input option:”
-#			DISPLAY “It must be in the list!”
+#			DISPLAY “\n**** ERROR ****\nInvalid input option:”
+#			DISPLAY “Check the list!”
 #		END IF
 #	ELIF option == 2 THEN
 #		IF input_unit_type == “meters” THEN
@@ -99,8 +99,8 @@
 #				DISPLAY “It must be in the list AND be different from input”
 #			END IF
 #		ELSE
-#			DISPLAY “Invalid input option:”
-#			DISPLAY “It must be in the list!”
+#			DISPLAY “\n**** ERROR ****\nInvalid input option:”
+#			DISPLAY “Check the list!”
 #		END IF
 #	ELIF option == 3 THEN
 #		IF input_unit_type == “celsius” THEN
@@ -118,11 +118,11 @@
 #				DISPLAY “It must be in the list AND be different from input”
 #			END IF
 #		ELSE
-#			DISPLAY “Invalid input option:”
-#			DISPLAY “It must be in the list!”
+#			DISPLAY “\n**** ERROR ****\nInvalid input option:”
+#			DISPLAY “Check the list!”
 #		END IF
 #	ELSE
-#		DISPLAY “Invalid conversion option! Please choose from the list”
+#		DISPLAY “\n**** ERROR ****\nInvalid conversion option! Please choose from the list”
 #	END IF
 #
 #	DISPLAY “**** INPUT UNIT ****”
@@ -146,18 +146,49 @@ print("1. Time (days, hours, minutes, seconds)")
 print("2. Distance (meters, kilometers, miles)")
 print("3. Temperature (celsius, fahrenheit)")
 
-option_input = input("Enter the corresponding number to the desired option:\n_> ")
-input_unit_type = input("Enter the input unit:\n_> ")
-input_unit_value_input = input("Enter the input unit value:\n_> ")
-output_unit_type = input("Enter the output unit type:\n_> ")
+option_input = input("Enter the corresponding number to the desired option:\n_> ").strip().lower()
+input_unit_type = input("Enter the input unit:\n_> ").strip().lower()
+input_unit_value_input = input("Enter the input unit value:\n_> ").strip().lower()
+output_unit_type = input("Enter the output unit type:\n_> ").strip().lower()
 
 
 # PROCESS -> here we convert user input and check this input using if, elif and else
 # statements to get the right logic branch in the program, to perform the correct
 # calculations for the conversion choosen by the user
 
+# validate option input
+if not option_input.isdigit():
+    print("\n**** ERROR ****\nOption must be a number between 1 and 4")
+    print("\n=================== END OF PROGRAM ===================")
+    quit()
 option = int(option_input)
-input_unit_value = float(input_unit_value_input)
+
+# validate value input | this is a float pattern validation, which is far more complex
+# than validating a menu option
+is_valid = True # a variable which stores the result of the validation process
+input = input_unit_value_input # alias to make it faster to type the code
+if len(input) == 0:
+    is_valid = False
+if input.count("+") > 0 and (input[0] != "+" or input.count("-") > 0):
+    is_valid = False
+if input.count("-") > 0 and (input[0] != "-" or input.count("+") > 0):
+    is_valid = False
+if input.count("+") > 1:
+    is_valid = False
+if input.count("-") > 1:
+    is_valid = False
+if input.count(".") > 1:
+    is_valid = False
+if not input.replace(".","").replace("+","").replace("-","").isdigit():
+    is_valid = False
+
+if not is_valid:
+    print("\n**** ERROR ****\nThe input value must be a float and can only contain digits, a leading sign (+ or -) and one dot\n\n")
+    print("\n=================== END OF PROGRAM ===================")
+    quit()
+
+
+input_unit_value = float(input)
 
 if option == 1:
 # if the above expression evaluates to True, enters the time conversion branch
@@ -176,8 +207,8 @@ if option == 1:
         else:
         # if the output_unit_value didn't match any previous check, than the
         # user input is not valid
-
-            print("Invalid option:")
+            is_valid = False
+            print("\n**** ERROR ****\nInvalid option:")
             print("It must be in the list AND be different from input")
 
     elif input_unit_type == "hours":
@@ -188,7 +219,8 @@ if option == 1:
         elif output_unit_type == "seconds":
             output_unit_value = input_unit_value * 60 * 60
         else:
-            print("Invalid option:")
+            is_valid = False
+            print("\n**** ERROR ****\nInvalid option:")
             print("It must be in the list AND be different from input")
 
     elif input_unit_type == "minutes":
@@ -199,7 +231,8 @@ if option == 1:
         elif output_unit_type == "seconds":
             output_unit_value = input_unit_value * 60
         else:
-            print("Invalid option:")
+            is_valid = False
+            print("\n**** ERROR ****\nInvalid option:")
             print("It must be in the list AND be different from input")
 
     elif input_unit_type == "seconds":
@@ -210,11 +243,13 @@ if option == 1:
         elif output_unit_type == "minutes":
             output_unit_value = input_unit_value / 60
         else:
-            print("Invalid option:")
+            is_valid = False
+            print("\n**** ERROR ****\nInvalid option:")
             print("It must be in the list AND be different from input")
     else: # if the variable didn't match any check, than the user input is not valid
-        print("Invalid input option:")
-        print("It must be in the list!")
+        is_valid = False
+        print("\n**** ERROR ****\nInvalid input option:")
+        print("Check the list!")
 
 elif option == 2: # and so on, for all menu options
     if input_unit_type == "meters":
@@ -223,7 +258,8 @@ elif option == 2: # and so on, for all menu options
         elif output_unit_type == "miles":
             output_unit_value = input_unit_value / (1000 * 1.609344)
         else:
-            print("Invalid option:")
+            is_valid = False
+            print("\n**** ERROR ****\nInvalid option:")
             print("It must be in the list AND be different from input")
 
     elif input_unit_type == "kilometers":
@@ -232,7 +268,8 @@ elif option == 2: # and so on, for all menu options
         elif output_unit_type == "miles":
             output_unit_value = input_unit_value / 1.609344
         else:
-            print("Invalid option:")
+            is_valid = False
+            print("\n**** ERROR ****\nInvalid option:")
             print("It must be in the list AND be different from input")
 
     elif input_unit_type == "miles":
@@ -241,30 +278,40 @@ elif option == 2: # and so on, for all menu options
         elif output_unit_type == "kilometers":
             output_unit_value = input_unit_value * 1.609344
         else:
-            print("Invalid option:")
+            is_valid = False
+            print("\n**** ERROR ****\nInvalid option:")
             print("It must be in the list AND be different from input")
     else:
-        print("Invalid input option:")
-        print("It must be in the list!")
+        is_valid = False
+        print("\n**** ERROR ****\nInvalid input option:")
+        print("Check the list!")
 
 elif option == 3:
     if input_unit_type == "celsius":
         if output_unit_type == "fahrenheit":
             output_unit_value = (input_unit_value * 9 / 5) + 32
         else:
-            print("Invalid option:")
+            is_valid = False
+            print("\n**** ERROR ****\nInvalid option:")
             print("It must be in the list AND be different from input")
     elif input_unit_type == "fahrenheit":
         if output_unit_type == "celsius":
             output_unit_value = (input_unit_value - 32) * 5 / 9
         else:
-            print("Invalid option:")
+            is_valid = False
+            print("\n**** ERROR ****\nInvalid option:")
             print("It must be in the list AND be different from input")
     else:
-        print("Invalid input option:")
-        print("It must be in the list!")
+        is_valid = False
+        print("\n**** ERROR ****\nInvalid input option:")
+        print("Check the list!")
 else:
-    print("Invalid conversion option! Please choose from the list")
+    is_valid = False
+    print("\n**** ERROR ****\nInvalid conversion option! Please choose from the list")
+
+if not is_valid:
+    print("\n=================== END OF PROGRAM ===================")
+    quit()
 
 # OUTPUT
 print(f"\n********* RESULTS *********\n\nINPUT UNIT: {input_unit_type:>15}")

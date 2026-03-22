@@ -1,6 +1,8 @@
 import re
 
 def validate_count(input):
+    if len(input) == 0:
+        return False
     if input.count("+") > 0 and (input[0] != "+" or input.count("-") > 0):
         return False
     if input.count("+") > 1:
@@ -20,6 +22,8 @@ def validate_loop(input):
     minus = 0
     dots = 0
     message = "input is valid"
+    if len(input) == 0:
+        return (False, "input cannot be empty")
     for i in range(len(input)):
         if input[i] == "+":
             plus += 1
@@ -67,6 +71,8 @@ def validate_replace(input):
     return True
 
 def validate_recursion(input):
+    if len(input) == 0:
+        return (False, "input cannot be empty")
     def next(input, index, plus, minus, dots):
         if input[index] == "+":
             plus += 1
@@ -97,6 +103,8 @@ def validate_recursion(input):
     return next(input, 0, 0, 0, 0)
 
 def validate_regex(input):
+    if len(input) == 0:
+        return False
     if re.match(r"^[-+]?[0-9]*\.?[0-9]+$", input) or re.match(r"^[-+]?[0-9]+\.?[0-9]*?$", input):
         return True
     return False
@@ -109,7 +117,7 @@ def validate_except(input):
     return True
 
 def run():
-    text = input("_> ")
+    text = input("_> ").strip().lower()
     if text == "quit":
         return
     print("Count:....", validate_count(text))

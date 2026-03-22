@@ -71,27 +71,27 @@ def validate_recursion(input):
         if input[index] == "+":
             plus += 1
             if index != 0:
-                return False
+                return (False, "input cannot contain non-leading signs")
             if plus > 1:
-                return False
+                return (False, "input cannot contain multiple signs")
             if minus > 0:
-                return False
+                return (False, "input cannot contain different signs")
         elif input[index] == "-":
             minus += 1
             if index != 0:
-                return False
+                return (False, "input cannot contain non-leading signs")
             if minus > 1:
-                return False
+                return (False, "input cannot contain multiple signs")
             if plus > 0:
-                return False
+                return (False, "input cannot contain different signs")
         elif input[index] == ".":
             dots += 1
             if dots > 1:
-                return False
+                return (False, "input cannot contain multiple dots")
         elif not input[index].isdigit():
-            return False
+            return (False, "input can only contain digits, one dot and '+' or '-' at the start")
         if index == len(input) - 1:
-            return True
+            return (True, "input is valid")
         else:
             return next(input, index + 1, plus, minus, dots)
     return next(input, 0, 0, 0, 0)
@@ -109,15 +109,16 @@ def validate_except(input):
     return True
 
 def run():
-    text = input("")
+    text = input("_> ")
     if text == "quit":
         return
-    print("Count:", validate_count(text))
-    print("Loop:", validate_loop(text))
-    print("Replace:", validate_replace(text))
+    print("Count:....", validate_count(text))
+    print("Loop:.....", validate_loop(text))
+    print("Replace:..", validate_replace(text))
     print("Recursion:", validate_recursion(text))
-    print("Regex:", validate_regex(text))
-    print("Except:", validate_except(text))
+    print("Regex:....", validate_regex(text))
+    print("Except:...", validate_except(text))
     return run()
 
+print("Type 'quit' to quit or type a number to check:")
 run()

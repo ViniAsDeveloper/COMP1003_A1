@@ -2,165 +2,159 @@
 
 # Student ID = 24897817
 
-# I decided to use the pseudocode convention where methods are represented as callable functions
-# For example, string.lower() is called like toLower(string)
+#BEGIN unit_converter
+#    DISPLAY "\n\n================== UNIT CONVERTER ==================="
+#    DISPLAY "This program converts values between units for:"
+#    DISPLAY "1. Time (days, hours, minutes, seconds)"
+#    DISPLAY "2. Distance (meters, kilometers, miles)"
+#    DISPLAY "3. Temperature (celsius, fahrenheit)"
+#    DISPLAY "Enter the number corresponding to the desired option:"
+#    GET option_input
+#    DISPLAY "Enter the input unit:"
+#    GET input_unit_type
+#    DISPLAY "Enter the input unit value:"
+#    GET input_unit_value_input
+#    SET input_unit_value = CHECK and CONVERT input_unit_value_input TO float
+#    DISPLAY "Enter the output unit type:"
+#    GET output_unit_type
+#    SET option = CHECK and CONVERT option_input TO integer
+#    IF option == 1 THEN
+#        IF input_unit_type == "days" THEN
+#            IF output_unit_type == "hours" THEN
+#                SET output_unit_value = input_unit_value * 24
+#            ELIF output_unit_type == "minutes" THEN
+#                SET output_unit_value =  input_unit_value * 24 * 60
+#            ELIF output_unit_type == "seconds" THEN
+#                SET output_unit_value =  input_unit_value * 24 * 60 * 60
+#            ELSE
+#                SET is_valid = False
+#                DISPLAY "Invalid output option:"
+#                DISPLAY "It must be in the list AND be different from input"
+#            END IF
+#
+#        ELIF  input_unit_type == "hours" THEN
+#            IF output_unit_type == "days" THEN
+#                SET output_unit_value = input_unit_value / 24
+#            ELIF output_unit_type == "minutes" THEN
+#                SET output_unit_value =  input_unit_value * 60
+#            ELIF output_unit_type == "seconds" THEN
+#                SET output_unit_value =  input_unit_value * 60 * 60
+#            ELSE
+#                SET is_valid = False
+#                DISPLAY "Invalid output option:"
+#                DISPLAY "It must be in the list AND be different from input"
+#            END IF
+#
+#        ELIF  input_unit_type == "minutes" THEN
+#            IF output_unit_type == "days" THEN
+#                SET output_unit_value = input_unit_value / (24 * 60)
+#            ELIF output_unit_type == "hours" THEN
+#                SET output_unit_value =  input_unit_value / 60
+#            ELIF output_unit_type == "seconds" THEN
+#                SET output_unit_value =  input_unit_value * 60
+#            ELSE
+#                SET is_valid = False
+#                DISPLAY "Invalid output option:"
+#                DISPLAY "It must be in the list AND be different from input"
+#            END IF
+#
+#        ELIF input_unit_type == "seconds" THEN
+#            IF output_unit_type == "days" THEN
+#                SET output_unit_value = input_unit_value / (24 * 60 * 60)
+#            ELIF output_unit_type == "hours" THEN
+#                SET output_unit_value =  input_unit_value / (60 * 60)
+#            ELIF output_unit_type == "minutes" THEN
+#                SET output_unit_value =  input_unit_value / 60
+#            ELSE
+#                SET is_valid = False
+#                DISPLAY "Invalid output option:"
+#                DISPLAY "It must be in the list AND be different from input"
+#            END IF
+#        ELSE
+#            SET is_valid = False
+#            DISPLAY "\n**** ERROR ****\nInvalid input option:"
+#            DISPLAY "Check the list!"
+#        END IF
+#    ELIF option == 2 THEN
+#        IF input_unit_type == "meters" THEN
+#            IF output_unit_type == "kilometers" THEN
+#                SET output_unit_value = input_unit_value / 1000
+#            ELIF output_unit_type == "miles" THEN
+#	            SET output_unit_value = input_unit_value / (1000 * 1.609344)
+#            ELSE
+#                SET is_valid = False
+#                DISPLAY "Invalid output option:"
+#                DISPLAY "It must be in the list AND be different from input"
+#            END IF
+#        ELIF input_unit_type == "kilometers" THEN
+#            IF output_unit_type == "meters" THEN
+#                SET output_unit_value = input_unit_value * 1000
+#            ELIF output_unit_type == "miles" THEN
+#                SET output_unit_value = input_unit_value / 1.609344
+#            ELSE
+#                SET is_valid = False
+#                DISPLAY "Invalid output option:"
+#                DISPLAY "It must be in the list AND be different from input"
+#            END IF
+#        ELIF input_unit_type == "miles" THEN
+#            IF output_unit_type == "meters" THEN
+#                SET output_unit_value = input_unit_value * 1000 * 1.609344
+#            ELIF output_unit_type == "kilometers" THEN
+#                SET output_unit_value = input_unit_value *  1.609344
+#            ELSE
+#                SET is_valid = False
+#                DISPLAY "Invalid output option:"
+#                DISPLAY "It must be in the list AND be different from input"
+#            END IF
+#        ELSE
+#            SET is_valid = False
+#            DISPLAY "\n**** ERROR ****\nInvalid input option:"
+#            DISPLAY "Check the list!"
+#        END IF
+#    ELIF option == 3 THEN
+#        IF input_unit_type == "celsius" THEN
+#            IF output_unit_type == "fahrenheit" THEN
+#                SET output_unit_value = (input_unit_value * 9 / 5) + 32
+#            ELSE
+#                SET is_valid = False
+#                DISPLAY "Invalid output option:"
+#                DISPLAY "It must be in the list AND be different from input"
+#            END IF
+#        ELIF input_unit_type == "fahrenheit" THEN
+#            IF output_unit_type == "celsius" THEN
+#                SET output_unit_value = (input_unit_value – 32) * 5 / 9
+#            ELSE
+#                SET is_valid = False
+#                DISPLAY "Invalid output option:"
+#                DISPLAY "It must be in the list AND be different from input"
+#            END IF
+#        ELSE
+#            SET is_valid = False
+#            DISPLAY "\n**** ERROR ****\nInvalid input option:"
+#            DISPLAY "Check the list!"
+#        END IF
+#    ELSE
+#        SET is_valid = False
+#        DISPLAY "\n**** ERROR ****\nInvalid conversion option! Please choose from the list"
+#    END IF
+#
+#    IF is_valid THEN
+#        DISPLAY "\n********* RESULTS *********\n\nINPUT UNIT:"
+#        DISPLAY input_unit_type
+#        DISPLAY "INPUT VALUE:"
+#        DISPLAY input_unit_value
+#        DISPLAY "OUTPUT TYPE: "
+#        DISPLAY output_unit_type
+#        DISPLAY "OUTPUT VALUE: "
+#        DISPLAY output_unit_value
+#        DISPLAY "\n*Results are trucated to 2 decimal places\n\n=================== END OF PROGRAM ==================="
+#    ELSE
+#        DISPLAY "\n=================== END OF PROGRAM ==================="
+#    END IF
+#END
 
-BEGIN unit_converter
-    DISPLAY “==== UNIT CONVERTER ====”
-    DISPLAY “This program converts values between units for:”
-    DISPLAY “1. Time (days, hours, minutes, seconds)”
-    DISPLAY “2. Distance (meters, kilometers, miles)”
-    DISPLAY “3. Temperature (celsius, fahrenheit)”
-    DISPLAY “Enter the number corresponding to the desired option:”
-    GET option_input
-    SET option_input = trim(option_input)
-    SET option_input = toLower(option_input)
-    DISPLAY “Enter the input unit:”
-    GET input_unit_type
-    SET input_unit_type = trim(input_unit_type)
-    SET input_unit_type = toLower(input_unit_type)
-    DISPLAY “Enter the input unit value:”
-    GET input_unit_value_input
-    SET input_unit_value_input = trim(input_unit_value_input)
-    SET input_unit_value_input = toLower(input_unit_value_input)
-    SET input_unit_value = CONVERT input_unit_value_input TO float
-    DISPLAY “Enter the output unit type:”
-    GET output_unit_type
-    SET output_unit_type = trim(output_unit_type)
-    SET output_unit_type = toLower(output_unit_type)
-
-    IF NOT isDigit(option_input) THEN
-        DISPLAY "\n**** ERROR ****\nOption must be a number between 1 and 4"
-        DISPLAY "\n=================== END OF PROGRAM ==================="
-        CALL quit()
-    END IF
-    SET option = CONVERT option_input TO integer
-
-    SET is_valid = True
-    SET input = input_unit_value_input
-    
-
-    IF option == 1 THEN
-        IF input_unit_type == “days” THEN
-            IF output_unit_type == “hours” THEN
-                SET output_unit_value = input_unit_value * 24
-            ELIF output_unit_type == “minutes” THEN
-                SET output_unit_value =  input_unit_value * 24 * 60
-            ELIF output_unit_type == “seconds” THEN
-                SET output_unit_value =  input_unit_value * 24 * 60 * 60
-            ELSE
-                DISPLAY “Invalid output option:”
-                DISPLAY “It must be in the list AND be different from input”
-            END IF
-
-        ELIF  input_unit_type == “hours” THEN
-            IF output_unit_type == “days” THEN
-                SET output_unit_value = input_unit_value / 24
-            ELIF output_unit_type == “minutes” THEN
-                SET output_unit_value =  input_unit_value * 60
-            ELIF output_unit_type == “seconds” THEN
-                SET output_unit_value =  input_unit_value * 60 * 60
-            ELSE
-                DISPLAY “Invalid output option:”
-                DISPLAY “It must be in the list AND be different from input”
-            END IF
-
-        ELIF  input_unit_type == “minutes” THEN
-            IF output_unit_type == “days” THEN
-                SET output_unit_value = input_unit_value / (24 * 60)
-            ELIF output_unit_type == “hours” THEN
-                SET output_unit_value =  input_unit_value / 60
-            ELIF output_unit_type == “seconds” THEN
-                SET output_unit_value =  input_unit_value * 60
-            ELSE
-                DISPLAY “Invalid output option:”
-                DISPLAY “It must be in the list AND be different from input”
-            END IF
-
-        ELIF input_unit_type == “seconds” THEN
-            IF output_unit_type == “days” THEN
-                SET output_unit_value = input_unit_value / (24 * 60 * 60)
-            ELIF output_unit_type == “hours” THEN
-                SET output_unit_value =  input_unit_value / (60 * 60)
-            ELIF output_unit_type == “minutes” THEN
-                SET output_unit_value =  input_unit_value / 60
-            ELSE
-                DISPLAY “Invalid output option:”
-                DISPLAY “It must be in the list AND be different from input”
-            END IF
-        ELSE
-            DISPLAY “\n**** ERROR ****\nInvalid input option:”
-            DISPLAY “Check the list!”
-        END IF
-    ELIF option == 2 THEN
-        IF input_unit_type == “meters” THEN
-            IF output_unit_type == “kilometers” THEN
-                SET output_unit_value = input_unit_value / 1000
-            ELIF output_unit_type == “miles” THEN
-	            SET output_unit_value = input_unit_value / (1000 * 1.609344)
-            ELSE
-                DISPLAY “Invalid output option:”
-                DISPLAY “It must be in the list AND be different from input”
-            END IF
-        ELIF input_unit_type == “kilometers” THEN
-            IF output_unit_type == “meters” THEN
-                SET output_unit_value = input_unit_value * 1000
-            ELIF output_unit_type == “miles” THEN
-                SET output_unit_value = input_unit_value / 1.609344
-            ELSE
-                DISPLAY “Invalid output option:”
-                DISPLAY “It must be in the list AND be different from input”
-            END IF
-        ELIF input_unit_type == “miles” THEN
-            IF output_unit_type == “meters” THEN
-                SET output_unit_value = input_unit_value * 1000 * 1.609344
-            ELIF output_unit_type == “kilometers” THEN
-                SET output_unit_type = input_unit_value *  1.609344
-            ELSE
-                DISPLAY “Invalid output option:”
-                DISPLAY “It must be in the list AND be different from input”
-            END IF
-        ELSE
-            DISPLAY “\n**** ERROR ****\nInvalid input option:”
-            DISPLAY “Check the list!”
-        END IF
-    ELIF option == 3 THEN
-        IF input_unit_type == “celsius” THEN
-            IF output_unit_type == “fahrenheit” THEN
-                SET output_unit_value = (input_unit_value * 9 / 5) + 32
-            ELSE
-                DISPLAY “Invalid output option:”
-                DISPLAY “It must be in the list AND be different from input”
-            END IF
-        ELIF input_unit_type == “fahrenheit” THEN
-            IF output_unit_type == “celsius” THEN
-                SET output_unit_value = (input_unit_value – 32) * 5 / 9
-            ELSE
-                DISPLAY “Invalid output option:”
-                DISPLAY “It must be in the list AND be different from input”
-            END IF
-        ELSE
-            DISPLAY “\n**** ERROR ****\nInvalid input option:”
-            DISPLAY “Check the list!”
-        END IF
-    ELSE
-        DISPLAY “\n**** ERROR ****\nInvalid conversion option! Please choose from the list”
-    END IF
-
-    DISPLAY “**** INPUT UNIT ****”
-    DISPLAY input_unit_type
-    DISPLAY “**** INPUT VALUE ****”
-    DISPLAY input_unit_value
-    DISPLAY “**** OUTPUT UNIT ****”
-    DISPLAY output_unit_type
-    DISPLAY “**** OUTPUT VALUE ****”
-    DISPLAY output_unit_value
-    DISPLAY “==== END OF PROGRAM ====”
-END
-
-# INPUT -> here we get user input using the input() function and pass
-# a string containing instructions to the users as the first argument to
-# this function
+# INPUT -> here we get user input using the input() function and display
+# a string containing instructions to the users as the first argument
 
 print("\n\n================== UNIT CONVERTER ===================")
 print("This program converts values between units for:")
@@ -220,7 +214,7 @@ if option == 1:
 
         if output_unit_type == "hours":
         # here, if True, perform calculations to get the output value in hours.
-        # The same logic is replicated for all possible combination of variables.
+        # The same logic is replicated for all possible combination of input -> output
             output_unit_value = input_unit_value * 24
         elif output_unit_type == "minutes":
             output_unit_value = input_unit_value * 24 * 60
@@ -337,11 +331,7 @@ if not is_valid:
 
 # OUTPUT
 print(f"\n********* RESULTS *********\n\nINPUT UNIT: {input_unit_type:>15}")
-# print(input_unit_type)
 print(f"INPUT VALUE: {input_unit_value:>14,.2f}")
-# print(input_unit_value)
 print(f"OUTPUT UNIT: {output_unit_type:>14}")
-# print(output_unit_type)
 print(f"OUTPUT VALUE: {output_unit_value:>13,.2f}")
-# print(output_unit_value)
 print("\n*Results are trucated to 2 decimal places\n\n=================== END OF PROGRAM ===================")
